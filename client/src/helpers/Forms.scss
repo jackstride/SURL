@@ -1,0 +1,229 @@
+.form_container {
+
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    form {
+        width: 400px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+
+        label {
+            color: rgba(255, 255, 255, .8);
+
+            font-size: 1em;
+            padding: 10px 0px;
+            align-self: start;
+        }
+
+        .hide {
+            opacity: 0;
+            height: 0px !important;
+            margin: 0px !important;
+        }
+
+        input[type=text],
+        input[type=password] {
+            height: 55px;
+            width: 100%;
+            background-color: transparent;
+            border: none;
+            margin-bottom: 25px;
+            transition: all 1s ease;
+            color: white;
+            border-bottom: 2px solid white;
+            padding-left: 30px;
+
+            &:focus {
+                transition: all 1s ease;
+                height: 65px;
+                outline: none;
+            }
+
+            &:hover {
+                transition: all 1s ease;
+                height: 65px;
+            }
+        }
+
+        p {
+            width: 100%;
+            position: relative;
+            transform: translate(-50%, -50);
+
+            svg {
+                position: absolute;
+                top: calc(50% - 1px);
+                left: 10px;
+                color: rgb(165, 165, 165);
+            }
+        }
+
+
+
+        input[type=submit] {
+            height: 50px;
+            width: 100%;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+            border: none;
+            background: #D8D8D8;
+            background-image: linear-gradient(270deg, #EC8C69 0%, #ED6EA0 100%);
+            box-shadow: -8px -10px 35px 0 rgba(255, 255, 255, 0.09), 8px 10px 30px 0 rgba(0, 0, 0, 0.30), inset 1px 1px 0 0 rgba(255, 255, 255, 0.12);
+            border-radius: 55px 0 55px 55px 55px;
+            transition: none;
+        }
+
+
+    }
+}
+
+
+
+///////// Social Logins /////////
+
+
+button.social {
+    width: 95%;
+    background-color: rgb(74, 133, 221);
+    height: 50px;
+    border: none;
+    border-radius: 22px;
+    margin: 20px 0px;
+    color: white;
+    cursor: pointer;
+}
+
+.login_container {
+    width: 400px;
+    padding-top: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    align-items: center;
+
+    .logo {
+        height: 200px;
+        margin: 20px;
+        transition: all 1s ease;
+
+        &:hover {
+            transform: scale(1.1);
+
+        }
+
+        img {
+            height: 100%;
+        }
+    }
+
+    h3 {
+        margin: 10px 0px;
+        font-weight: 400;
+
+    }
+
+    h4 {
+        font-size: 1em;
+        color: rgba(255, 255, 255, .5);
+        font-weight: 300;
+    }
+
+    .social_auth {
+        margin-top: 50px;
+        width: 100%;
+        align-self: center;
+
+    }
+}
+
+
+.register_container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    min-height: 100vh;
+    background-color: #fafafa;
+
+
+    .register_form {
+        width: 600px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        margin: 0 auto;
+
+
+        h3,
+        h2,
+        p {
+            color: #141414;
+
+
+            a {
+                color: blue;
+            }
+        }
+
+
+        h2 {
+            margin: 10px 0px;
+        }
+
+        form {
+            width: 100%;
+
+            label {
+                color: lightgrey;
+            }
+
+            input[type=text],
+            input[type=password] {
+                border: 2px solid lightgrey;
+                border-radius: 4px;
+                color: rgb(59, 59, 59);
+            }
+
+            input[type=submit] {
+                width: 50%;
+                align-self: start;
+                margin-top: 10px;
+            }
+        }
+    }
+
+
+    .second_section {
+        background-color: #141414;
+        background-image: linear-gradient(270deg, #EC8C69 0%, #ED6EA0 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+
+        img {
+            max-width: 80%;
+            height: auto;
+        }
+
+        .register_text {
+            align-self: start;
+            padding-left: 100px;
+            width: 60%;
+        }
+    }
+
+    .social_auth {
+        margin-top: 50px;
+        width: 80%;
+        align-self: center;
+
+    }
+
+
+}
