@@ -15,7 +15,12 @@ const authRoute = require('./Routes/Auth');
 
 // app.use(cors());
 app.use(helmet());
-app.use(cors());
+app.use(
+  cors({
+    origin: '*',
+    methods: 'POST PUT GET PATCH UPDATE',
+  })
+);
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 

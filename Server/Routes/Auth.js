@@ -40,9 +40,9 @@ router.post('/register', async (req, res, next) => {
 // User Login
 router.post('/login', async (req, res, next) => {
   let { email, password } = req.body;
+
   try {
     email = email.toLowerCase();
-
     let found = await User.find({ email });
 
     if (!found.length) {
@@ -56,6 +56,10 @@ router.post('/login', async (req, res, next) => {
       const payload = { _id, email };
 
       let token = await generateToken(payload);
+
+      if (!token) {
+        return next(error);
+      }
       res.header('Authorization', 'bearer' + token).json({
         user: payload,
       });
@@ -79,11 +83,10 @@ router.get('/all', async (req, res, next) => {
   }
 });
 
-const generateToken = (payload) => {
-  let token = jwt.sign(payload, process.env.JWT_SECRET, {
+const generateToken = async (payload) => {
+  let token = await jwt.sign(payload, process.env.JWT_SECRET, {
     expiresIn: '2 days',
   });
-
   if (token) {
     return token;
   } else {
