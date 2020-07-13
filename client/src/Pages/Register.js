@@ -1,6 +1,6 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import RegisterForm from '../Components/Register/Register';
-import Logo from '../images/surlsquare.png';
+
 import SocialLogin from '../Components/SocialLogin';
 import { Link } from 'react-router-dom';
 import RegisterImage from '../images/register_img.svg';
