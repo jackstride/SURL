@@ -7,6 +7,9 @@ import Login from './Pages/Login';
 import Register from './Pages/Register';
 import Private from './Pages/ProtectedRoute';
 
+// Web Applicaiton
+import WebApplication from './Components/Application/index';
+
 function App() {
   return (
     <Router>
@@ -14,7 +17,9 @@ function App() {
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
         <Route exact path="/" component={Home} />
-        <Private route="/app" />
+        <Private path="/app">
+          <WebApplication />
+        </Private>
       </Switch>
     </Router>
   );

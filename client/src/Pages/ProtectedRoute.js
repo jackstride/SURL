@@ -3,6 +3,7 @@ import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 const ProtectedRoute = ({ isAuthenticated, children, ...rest }) => {
+  console.log('hit');
   return (
     <Route
       {...rest}
