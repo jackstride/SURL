@@ -1,14 +1,13 @@
 const express = require('express');
 const router = express.Router();
-
+const { nanoid } = require('nanoid');
 const URL = require('../Schema/url');
 
 //User logged in can post
 router.post('/', async (req, res, next) => {
   try {
     let { slug, url, _id } = req.body;
-
-    _id = '5f085de32bdb980b8b64e728';
+    console.log(req.body);
 
     if (!_id) {
       return next('There is not user id');
@@ -16,6 +15,7 @@ router.post('/', async (req, res, next) => {
 
     if (!slug) {
       slug = nanoid(5);
+      console.log(slug);
     }
 
     slug = slug.toLowerCase();
@@ -67,6 +67,24 @@ router.get('/:id', async (req, res, next) => {
   let { url } = link[0];
 
   res.redirect(202, url);
+});
+
+// Delete URLS
+
+router.delete('/delete', async (req, res, next) => {
+  let { _id } = req.body;
+
+  let success = await URL.deleteMany({
+    _id: {
+      $in: _id,
+    },
+  });
+
+  if (success) {
+    res.sendStatus(200);
+  } else {
+    return next(error);
+  }
 });
 
 module.exports = router;

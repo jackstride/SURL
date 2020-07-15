@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const useForm = () => {
-  const [state, setState] = useState({});
+  let [state, setState] = useState({});
 
   const handleChange = (e) => {
     e.persist();

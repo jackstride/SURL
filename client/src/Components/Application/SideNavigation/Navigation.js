@@ -21,7 +21,7 @@ const Navigation = () => {
         <div className="icon"></div>
       </div>
       {sections.map((item, i) => (
-        <div className="navigation_item flex_center">
+        <div key={i} className="navigation_item flex_center">
           <NavLink activeClassName="app_active" exact to={item.link}></NavLink>
           <div className="icon">
             <FontAwesomeIcon icon={item.icon} />

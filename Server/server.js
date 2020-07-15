@@ -18,7 +18,7 @@ app.use(helmet());
 app.use(
   cors({
     origin: '*',
-    methods: 'POST PUT GET PATCH UPDATE',
+    methods: 'POST PUT GET PATCH UPDATE DELETE',
   })
 );
 app.use(express.json());

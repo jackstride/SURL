@@ -23,6 +23,14 @@ const urlSchema = new Schema({
     type: String,
     required: true,
   },
+  date: {
+    type: Date,
+    default: Date.now(),
+  },
+  isEnabled: {
+    type: Boolean,
+    default: true,
+  },
 });
 
 const URL = mongoose.model('URL', urlSchema);
