@@ -1,9 +1,9 @@
 import React from 'react';
 import RegisterForm from '../Components/Register/Register';
-
 import SocialLogin from '../Components/SocialLogin';
 import { Link } from 'react-router-dom';
 import RegisterImage from '../images/register_img.svg';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Register = () => {
   return (

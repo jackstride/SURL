@@ -10,6 +10,8 @@ import {
   faLock,
   faAt,
   faLink,
+  faAngleDown,
+  faCheck,
 } from '@fortawesome/free-solid-svg-icons';
 import { faEnvelopeOpen } from '@fortawesome/free-regular-svg-icons';
 
@@ -24,5 +26,7 @@ library.add(
   faEnvelope,
   faLock,
   faAt,
-  faLink
+  faLink,
+  faAngleDown,
+  faCheck
 );

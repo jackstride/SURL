@@ -1,6 +1,7 @@
 import React from 'react';
 import LinkCount from './LinkCount';
 import LinkInput from './LinkInput';
+import LinkBoard from './LinkBoard';
 
 const index = () => {
   return (
@@ -11,6 +12,9 @@ const index = () => {
       <div className="dashboard_row">
         <LinkCount />
         <LinkInput />
+      </div>
+      <div className="dashboard_board">
+        <LinkBoard />
       </div>
     </div>
   );
