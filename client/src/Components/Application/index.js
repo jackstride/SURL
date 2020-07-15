@@ -1,7 +1,9 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Navigation from './SideNavigation/Navigation.js';
-import Link from './SideNavigation/Links';
+
+// Main UI
+import AppUI from './MainUI/index';
 
 const ApplicaitonHome = () => {
   return (
@@ -9,10 +11,8 @@ const ApplicaitonHome = () => {
       <Navigation />
       <div className="application_content">
         <Switch>
-          <Route path="/app/profile">
-            <Test />
-          </Route>
-          <Route exact path="/app" component={Link} />
+          <Route path="/app/profile" />
+          <Route exact path="/app" component={AppUI} />
         </Switch>
       </div>
     </div>
