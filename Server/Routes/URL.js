@@ -15,7 +15,6 @@ router.post('/', async (req, res, next) => {
 
     if (!slug) {
       slug = nanoid(5);
-      console.log(slug);
     }
 
     slug = slug.toLowerCase();
@@ -33,7 +32,7 @@ router.post('/', async (req, res, next) => {
     } else {
       let success = await pushURL.save();
       if (success) {
-        res.json({ message: 'URL has been saved', url, slug });
+        res.json({ message: 'URL has been saved', success });
       }
     }
   } catch (error) {

@@ -44,18 +44,18 @@ const Footer = () => {
           <p>A smart a simple tool to manage url's.</p>
         </div>
         <div className="pages">
-          {links.splice(0, 3).map((item) => {
-            return <p>{item.title}</p>;
+          {links.splice(0, 3).map((item, i) => {
+            return <p key={i}>{item.title}</p>;
           })}
         </div>
         <div className="legal">
-          {links.splice(0, 3).map((item) => {
-            return <p>{item.title}</p>;
+          {links.splice(0, 3).map((item, i) => {
+            return <p key={i}>{item.title}</p>;
           })}
         </div>
         <div className="social">
-          {links.splice(0, 3).map((item) => {
-            return <p>{item.title}</p>;
+          {links.splice(0, 3).map((item, i) => {
+            return <p key={i}>{item.title}</p>;
           })}
         </div>
       </div>

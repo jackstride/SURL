@@ -6,6 +6,7 @@ import Home from './Pages/Home';
 import Login from './Pages/Login';
 import Register from './Pages/Register';
 import Private from './Pages/ProtectedRoute';
+import Logout from './Pages/Logout';
 
 // Web Applicaiton
 import WebApplication from './Components/Application/index';
@@ -16,6 +17,7 @@ function App() {
       <Switch>
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
+        <Route path="/logout" component={Logout} />
         <Route exact path="/" component={Home} />
         <Private path="/app">
           <WebApplication />

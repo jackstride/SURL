@@ -1,6 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Navigation from './SideNavigation/Navigation.js';
+import { connect } from 'react-redux';
 
 // Main UI
 import AppUI from './MainUI/index';
@@ -20,7 +21,3 @@ const ApplicaitonHome = () => {
 };
 
 export default ApplicaitonHome;
-
-const Test = () => {
-  return <h1> Hello </h1>;
-};

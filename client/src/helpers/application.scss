@@ -193,6 +193,7 @@
             width: 84px;
             color: #748498;
             padding-left: 8px;
+            cursor: pointer;
         }
 
 
@@ -275,7 +276,7 @@
         height: fit-content;
         display: flex;
         flex-direction: row;
-        background-color: $blue;
+        background-color: rgb(236, 57, 57);
         border-radius: 8px;
         align-items: center;
         padding: 8px;
@@ -284,7 +285,6 @@
         input[type=submit] {
             width: fit-content;
             height: fit-content;
-            color: red;
             border: none;
             color: white;
             cursor: pointer;

@@ -4,11 +4,16 @@ import { connect } from 'react-redux';
 import { getAllUrls, deleteURL } from '../../../Actions/urlActions';
 const moment = require('moment');
 
-const LinkBoard = ({ getAllUrls, links, deleteURL }) => {
+const LinkBoard = ({ user_id, getAllUrls, links, deleteURL }) => {
   const [values, setValues] = useState([]);
+  const [isEmpty, setEmpty] = useState(false);
 
   useEffect(() => {
-    getAllUrls();
+    !links.length ? setEmpty(true) : setEmpty(false);
+  }, [isEmpty, links]);
+
+  useEffect(() => {
+    getAllUrls(user_id);
   }, [getAllUrls]);
 
   const handleDelete = (e) => {
@@ -19,13 +24,19 @@ const LinkBoard = ({ getAllUrls, links, deleteURL }) => {
   return (
     <div className="link_board_container">
       <form method="delete" onSubmit={handleDelete}>
-        <div className="submit">
-          <input type="submit" name="submit" value="Remove" />
-          <FontAwesomeIcon icon="times" color="white" size="sm" />
-        </div>
-        {links.map((item, i) => (
-          <Item setValues={setValues} values={values} key={i} data={item} />
-        ))}
+        {!isEmpty && (
+          <div className="submit">
+            <input type="submit" name="submit" value="Remove" />
+            <FontAwesomeIcon icon="times" color="white" size="sm" />
+          </div>
+        )}
+        {!isEmpty ? (
+          links.map((item, i) => (
+            <Item setValues={setValues} values={values} key={i} data={item} />
+          ))
+        ) : (
+          <EmptyItem />
+        )}
       </form>
     </div>
   );
@@ -33,13 +44,14 @@ const LinkBoard = ({ getAllUrls, links, deleteURL }) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getAllUrls: () => dispatch(getAllUrls()),
+    getAllUrls: (user_id) => dispatch(getAllUrls(user_id)),
     deleteURL: (values) => dispatch(deleteURL(values)),
   };
 };
 const mapStateToProps = (state) => {
   return {
     links: state.urls.urls,
+    user_id: state.auth.user._id,
   };
 };
 
@@ -61,6 +73,15 @@ const Item = ({ data, setValues, values }) => {
       <button className={data.isEnabled ? 'link_enabled' : 'link_disabled'}>
         {data.isEnabled ? 'Enabled' : 'Disabled'}
       </button>
+    </div>
+  );
+};
+
+const EmptyItem = () => {
+  return (
+    <div className="link_item">
+      <FontAwesomeIcon icon="link" size="x1" color="lightgrey" />
+      <a style={{ color: 'grey' }}>Oops, It appears you have no links.</a>
     </div>
   );
 };

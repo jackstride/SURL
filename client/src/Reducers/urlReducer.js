@@ -13,6 +13,7 @@ export default (state = initialState, action) => {
       };
     }
     case POST_URL: {
+      console.log(action.payload);
       return {
         ...state,
         urls: [...state.urls, action.payload],

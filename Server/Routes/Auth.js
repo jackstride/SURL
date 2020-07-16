@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const bycrypt = require('bcrypt');
+const passport = require('passport');
+
 const User = require('../Schema/User');
 const jwt = require('jsonwebtoken');
 
@@ -71,16 +73,39 @@ router.post('/login', async (req, res, next) => {
   }
 });
 
-router.get('/all', async (req, res, next) => {
-  try {
-    let getUsers = await User.find();
+router.get('/twitter', passport.authenticate('twitter'));
 
-    if (getUsers) {
-      return res.json({ users: getUsers });
+router.get(
+  '/twitter/callback',
+  passport.authenticate('twitter'),
+  async (req, res, next) => {
+    try {
+      let payload = {
+        _id: req.user._id,
+        email: req.user.email,
+      };
+
+      let token = await generateToken(payload);
+
+      payload.token = token;
+
+      if (!token) {
+        return next(error);
+      } else {
+        req.session.token = token;
+        req.session.user = req.user;
+        res.redirect('http://localhost:3000/app');
+      }
+    } catch (error) {
+      console.log(error);
     }
-  } catch (err) {
-    next(err);
   }
+);
+
+router.post('/logout', async (req, res, next) => {
+  console.log('hit');
+  req.session.destroy();
+  res.sendStatus(200);
 });
 
 const generateToken = async (payload) => {
