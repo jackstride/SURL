@@ -1,5 +1,10 @@
 import axios from 'axios';
-import { USER_LOGIN, USER_LOGOUT, LOAD_USER } from './types';
+import {
+  USER_LOGIN,
+  USER_LOGOUT,
+  LOAD_USER,
+  VERIFY_SOCIAL_AUTH,
+} from './types';
 
 // Get the use token
 
@@ -50,4 +55,15 @@ export const logout = () => (dispatch) => {
 const saveToken = (token) => {
   let localToken = token.split('bearer')[1];
   window.localStorage.setItem('token', localToken);
+};
+
+export const verifySocialAuth = () => (dispatch) => {
+  axios.get('/auth/social_verification').then((res) => {
+    const token = res.data.token;
+    window.localStorage.setItem('token', token);
+    dispatch({
+      type: VERIFY_SOCIAL_AUTH,
+      payload: res.data,
+    });
+  });
 };

@@ -3,6 +3,7 @@ import {
   USER_LOGOUT,
   USER_REGISTER,
   LOAD_USER,
+  VERIFY_SOCIAL_AUTH,
 } from '../Actions/types';
 
 const initialState = {
@@ -27,6 +28,12 @@ export default (state = initialState, action) => {
       return {
         isAuthenticated: false,
         user: null,
+      };
+    }
+    case VERIFY_SOCIAL_AUTH: {
+      return {
+        isAuthenticated: true,
+        user: action.payload.user,
       };
     }
     case 'USER_LOADED':

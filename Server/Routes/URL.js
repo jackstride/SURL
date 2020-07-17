@@ -7,7 +7,6 @@ const URL = require('../Schema/url');
 router.post('/', async (req, res, next) => {
   try {
     let { slug, url, _id } = req.body;
-    console.log(req.body);
 
     if (!_id) {
       return next('There is not user id');

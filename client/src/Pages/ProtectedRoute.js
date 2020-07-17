@@ -7,6 +7,7 @@ const ProtectedRoute = ({ loadUser, isAuthenticated, children, ...rest }) => {
   useEffect(() => {
     loadUser();
   }, [loadUser]);
+
   return (
     <Route
       {...rest}

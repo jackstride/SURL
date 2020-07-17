@@ -94,7 +94,7 @@ router.get(
       } else {
         req.session.token = token;
         req.session.user = req.user;
-        res.redirect('http://localhost:3000/app');
+        res.redirect('http://localhost:3000/social?redirect=true');
       }
     } catch (error) {
       console.log(error);
@@ -102,8 +102,15 @@ router.get(
   }
 );
 
+router.get('/social_verification', (req, res, next) => {
+  console.log(req.session);
+  res.json({
+    user: req.session.user,
+    token: req.session.token,
+  });
+});
+
 router.post('/logout', async (req, res, next) => {
-  console.log('hit');
   req.session.destroy();
   res.sendStatus(200);
 });

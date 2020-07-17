@@ -10,6 +10,7 @@ module.exports = async (req, res, next) => {
       const verified = await jwt.verify(token, process.env.JWT_SECRET);
 
       if (verified) {
+        console.log('token verified');
         return next();
       } else {
         return next(error);
