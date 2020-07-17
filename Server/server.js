@@ -21,6 +21,7 @@ app.use(
   cors({
     origin: '*',
     methods: 'POST PUT GET PATCH UPDATE DELETE',
+    // credentials: true,
   })
 );
 app.use(express.json());
@@ -37,7 +38,7 @@ app.use(
 // Routes
 app.use('/url', urlRoute);
 app.use('/auth', authRoute);
-app.use('/test', AppAuth);
+app.use('/app', AppAuth);
 
 // Home Page
 
@@ -46,10 +47,12 @@ app.use('/test', AppAuth);
 // Errors handler I like it
 app.use((error, req, res, next) => {
   if (error.status) {
-    res.status(errors.status);
+    res.status(error.status);
   } else {
     res.status(500);
   }
+  console.log(res.statusCode);
+  console.log(error.message);
   res.json({
     message: error.message,
   });

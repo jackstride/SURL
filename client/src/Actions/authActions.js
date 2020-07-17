@@ -1,13 +1,24 @@
 import axios from 'axios';
 import { USER_LOGIN, USER_LOGOUT, LOAD_USER } from './types';
 
+// Get the use token
+
+const userToken = localStorage.getItem('token');
+
 export const loadUser = () => (dispatch) => {
-  axios.get('/test').then((res) => {
-    dispatch({
-      type: LOAD_USER,
-      payload: res.data,
+  axios
+    .get('/app', {
+      // withCredentials: true,
+      headers: {
+        Authorization: userToken,
+      },
+    })
+    .then((res) => {
+      dispatch({
+        type: LOAD_USER,
+        payload: res.data,
+      });
     });
-  });
 };
 
 export const user_login = (values) => (dispatch) => {
@@ -29,7 +40,6 @@ export const register = (values) => (dispatch) => {
 };
 
 export const logout = () => (dispatch) => {
-  console.log('called');
   axios.post('/auth/logout').then((res) => {
     dispatch({
       type: USER_LOGOUT,
